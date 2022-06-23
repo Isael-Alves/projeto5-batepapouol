@@ -5,15 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Parrot Card Game</title>
+    <title>Chat UOL</title>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-   
 
+    <div class="Login">
+        <img src="img/logo 1.svg" alt="">
+        <div>
+            <input type="text" placeholder="Digite seu nome" />
+            <div class="Button" onclick="Login()">Entrar</div>
+        </div>
+    </div>
+
+    <div class="Body Hidden">
+        <header>
+            <img src="img/logo 1.svg" alt="">
+            <ion-icon name="people"></ion-icon>
+        </header>
+
+        <nav>
+            <ul>
+            </ul>
+        </nav>
+
+        <footer>
+            <input type="text" placeholder="Escreva aqui..." />
+            <ion-icon name="paper-plane-outline"></ion-icon>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
 </body>
 
