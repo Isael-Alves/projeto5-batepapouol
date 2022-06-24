@@ -1,26 +1,32 @@
-let User = "";
+let Name = "";
 let Messages;
 
 
-function Login(){
-    User = document.querySelector(".Login input").value;
+function Login() {
+    Name = document.querySelector(".Login input").value;
+    const User = { name: Name };
     document.querySelector(".Login").classList.add("Hidden");
     document.querySelector(".Body").classList.remove("Hidden");
 
-    const promessa = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
-    promessa.then(FetchMessages);
-
-
+    setInterval(() => { axios.post('https://mock-api.driven.com.br/api/v6/uol/status', User)}, 5000);
     
-    
-}
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', User);
+    promessa.then(() => {
 
-function FetchMessages(){
-    const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
-    promise.then(LoadMessages);
+        const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+        promise.then(LoadMessages);
+
+    });
+
+    promessa.catch((answer) => {
+        console.log(answer);
+        alert("usuário offline ou nome do usuário já existente, faça login novamente");
+        window.location.reload();
+    });
 }
 
 function LoadMessages(messages) {
+
     Messages = messages.data;
 
     for (let i = 0; i < Messages.length; i++) {
