@@ -47,7 +47,7 @@
 }
 
 .Login .Button:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .Body {
@@ -127,7 +127,6 @@ strong {
     margin-right: 4px;
 }
 
-
 footer {
     bottom: 0;
     right: 0;
@@ -137,6 +136,10 @@ footer {
 footer ion-icon {
     width: 30px;
     height: 30px;
+}
+
+footer ion-icon:hover {
+    opacity: 0.5;
 }
 
 input {
