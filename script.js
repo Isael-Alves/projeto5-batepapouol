@@ -34,30 +34,32 @@ function LoadMessages(messages) {
     Messages = messages.data;
 
     for (let i = 0; i < Messages.length; i++) {
+        let recipient = Messages[i].to;
+        let sender = Messages[i].from;
         let messageType = Messages[i].type;
+
         if (messageType === "status") {
             document.querySelector("ul").innerHTML +=
                 `<li class="msg ${Messages[i].type}">
-                    <span><p>(${Messages[i].time})</p> <strong> ${Messages[i].from} </strong> ${Messages[i].text}</span>
+                    <span><p>(${Messages[i].time})</p> <strong> ${sender} </strong> ${Messages[i].text}</span>
                 </li>`;
         }
 
         if (messageType === "message") {
             document.querySelector("ul").innerHTML +=
                 `<li class="msg ${Messages[i].type}">
-                    <span><p>(${Messages[i].time})</p> <strong> ${Messages[i].from} </strong> para <strong> ${Messages[i].to} </strong> ${Messages[i].text}</span>
+                    <span><p>(${Messages[i].time})</p> <strong> ${sender} </strong> para <strong> ${recipient} </strong> ${Messages[i].text}</span>
                 </li>`;
         }
 
-        let recipient = Messages[i].to;
-        if (messageType === "private_message" && Name === recipient) {
+        if (messageType === "private_message" && (Name === recipient || Name === sender)) {
             document.querySelector("ul").innerHTML +=
                 `<li class="msg ${Messages[i].type}">
                     <span>
                     <p>(${Messages[i].time})</p> 
-                    <strong> ${Messages[i].from} </strong>
+                    <strong> ${sender} </strong>
                     reservadamente para 
-                    <strong> ${Messages[i].to} </strong> 
+                    <strong> ${recipient} </strong> 
                     ${Messages[i].text}
                     </span>
                 </li>`;
@@ -77,7 +79,7 @@ function SendMessage() {
                 to: "Todos",
                 text: Text,
                 type: "message"
-            });      
+            });
 
     } else {
 
